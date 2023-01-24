@@ -21,7 +21,7 @@ pub fn part_two(input: &str) -> u32 {
 }
 
 #[cfg(test)]
-mod tests {
+mod day_1_tests {
     use super::*;
 
     #[test]
