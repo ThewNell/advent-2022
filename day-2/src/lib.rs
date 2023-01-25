@@ -1,5 +1,5 @@
 pub fn part_one(input: &str) -> u32 {
-    let total = input.split('\n').into_iter().map(|r| {
+    let total = input.lines().into_iter().map(|r| {
         let mut moves = r.split(" ");
 
         let elf_move = moves.nth(0).unwrap();

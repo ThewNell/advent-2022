@@ -1,6 +1,6 @@
 pub fn part_one(input: &str) -> u32 {
     input.split("\n\n").map(|s| {
-        s.split('\n').map(|c| {
+        s.lines().map(|c| {
             str::parse::<u32>(c).unwrap_or_default()
         }).sum::<u32>()
     }).max()
@@ -9,13 +9,13 @@ pub fn part_one(input: &str) -> u32 {
 
 pub fn part_two(input: &str) -> u32 {
     let mut totals = Vec::<u32>::from_iter(input.split("\n\n").map(|g| {
-        g.split('\n').map(|c| {
+        g.lines().map(|c| {
             str::parse::<u32>(c).unwrap_or_default()
         }).sum::<u32>()
     }));
 
     totals.sort_by(|a, b| b.cmp(a));
-    let new_totals = totals[0..=2].into_iter().sum::<u32>();
+    let new_totals = totals.iter().take(3).sum();
 
     new_totals
 }
