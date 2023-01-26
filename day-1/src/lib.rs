@@ -1,17 +1,20 @@
 pub fn part_one(input: &str) -> u32 {
-    input.split("\n\n").map(|s| {
-        s.lines().map(|c| {
-            str::parse::<u32>(c).unwrap_or_default()
-        }).sum::<u32>()
-    }).max()
-    .unwrap_or_default()
+    input
+        .split("\n\n")
+        .map(|s| {
+            s.lines()
+                .map(|c| str::parse::<u32>(c).unwrap_or_default())
+                .sum::<u32>()
+        })
+        .max()
+        .unwrap_or_default()
 }
 
 pub fn part_two(input: &str) -> u32 {
     let mut totals = Vec::<u32>::from_iter(input.split("\n\n").map(|g| {
-        g.lines().map(|c| {
-            str::parse::<u32>(c).unwrap_or_default()
-        }).sum::<u32>()
+        g.lines()
+            .map(|c| str::parse::<u32>(c).unwrap_or_default())
+            .sum::<u32>()
     }));
 
     totals.sort_by(|a, b| b.cmp(a));
@@ -50,8 +53,7 @@ mod day_1_tests {
 }
 
 #[allow(dead_code)]
-const TEST_INPUT: &str =
-r#"1000
+const TEST_INPUT: &str = r#"1000
 2000
 3000
 
@@ -67,8 +69,7 @@ r#"1000
 10000"#;
 
 #[allow(dead_code)]
-const PUZZLE_INPUT: &str =
-r#"5104
+const PUZZLE_INPUT: &str = r#"5104
 6131
 3553
 4496

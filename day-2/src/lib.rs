@@ -1,40 +1,44 @@
 pub fn part_one(input: &str) -> u32 {
-    let total = input.lines().into_iter().map(|r| {
-        let mut moves = r.split(" ");
+    let total = input
+        .lines()
+        .into_iter()
+        .map(|r| {
+            let mut moves = r.split(" ");
 
-        let elf_move = moves.nth(0).unwrap();
-        let player_move = moves.nth(0).unwrap();
+            let elf_move = moves.nth(0).unwrap();
+            let player_move = moves.nth(0).unwrap();
 
-        let elf_move = get_hand_shape(elf_move);
-        let player_move = get_hand_shape(player_move);
-        let round_result = get_round_result(elf_move, &player_move);
-        let round_score = get_round_score(player_move, round_result);
+            let elf_move = get_hand_shape(elf_move);
+            let player_move = get_hand_shape(player_move);
+            let round_result = get_round_result(elf_move, &player_move);
+            let round_score = get_round_score(player_move, round_result);
 
-        round_score        
-    }).sum();
-
-    dbg!(total);
+            round_score
+        })
+        .sum();
 
     total
 }
 
 pub fn part_two(input: &str) -> u32 {
-    let total = input.split('\n').into_iter().map(|r| {
-        let mut moves = r.split(" ");
+    let total = input
+        .split('\n')
+        .into_iter()
+        .map(|r| {
+            let mut moves = r.split(" ");
 
-        let elf_move = moves.nth(0).unwrap();
-        let round_result = moves.nth(0).unwrap();
+            let elf_move = moves.nth(0).unwrap();
+            let round_result = moves.nth(0).unwrap();
 
-        let round_result = parse_round_result(round_result);
-        let elf_move = get_hand_shape(elf_move);
+            let round_result = parse_round_result(round_result);
+            let elf_move = get_hand_shape(elf_move);
 
-        let player_move = get_hand_shape_for_result(elf_move, &round_result);
-        let round_score = get_round_score(player_move, round_result);
+            let player_move = get_hand_shape_for_result(elf_move, &round_result);
+            let round_score = get_round_score(player_move, round_result);
 
-        round_score
-    }).sum();
-
-    dbg!(total);
+            round_score
+        })
+        .sum();
 
     total
 }
