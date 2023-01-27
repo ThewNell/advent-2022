@@ -93,7 +93,7 @@ where
 }
 
 #[cfg(test)]
-mod tests {
+mod day_3_tests {
     use super::*;
 
     #[test]
